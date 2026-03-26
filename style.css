@@ -1,0 +1,120 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #fcfaf7; /* একটু মাটির রঙের ভাইব */
+}
+
+.brand-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: #5d4037 !important;
+}
+
+.hero-section {
+    background-color: #efebe9;
+    border-bottom: 1px solid #d7ccc8;
+}
+
+.hero-section h1 {
+    font-family: 'Playfair Display', serif;
+    color: #3e2723;
+}
+
+.product-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 12px;
+    overflow: hidden;
+    filter: brightness(1.05) contrast(1.1); /* ছবিগুলো আরও প্রাণবন্ত দেখাবে */
+}
+
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+    transform: scale(1.1);
+}
+
+.btn-dark {
+    background-color: #5d4037;
+    border: none;
+    border-radius: 8px;
+}
+
+.btn-dark:hover {
+    background-color: #3e2723;
+}
+.navbar .form-control {
+    border-radius: 20px;
+}
+.navbar .btn {
+    border-radius: 20px;
+}
+html {
+    scroll-behavior: smooth;
+}
+.whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25d366;
+    color: #FFF;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: 0.3s;
+}
+.whatsapp-float:hover {
+    background-color: #128c7e;
+    transform: scale(1.1);
+    color: #fff;
+}
+.language-dropdown {
+    background-color: #ff6600; /* আপনার ছবির কমলা রঙের কাছাকাছি */
+    color: white;
+    padding: 5px 15px;
+    border-radius: 5px;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+}
+.language-dropdown select {
+    background: transparent;
+    border: none;
+    color: white;
+    font-weight: bold;
+    outline: none;
+    cursor: pointer;
+}
+.language-dropdown select option {
+    color: black;
+}
+.navbar-brand img {
+    border-radius: 5px; /* লোগোর কোণাগুলো হালকা রাউন্ড করার জন্য */
+    object-fit: contain;
+}
+/* ড্রপডাউন বাটনের ব্যাকগ্রাউন্ড কালার */
+.nav-item.dropdown .btn-outline-dark {
+     background-color: #88503d !important; /*আপনার লোগোর খয়েরি শেড */
+    color: white !important;
+    border: none;
+}
+
+/* মাউস নিলে (Hover) কালার */
+.nav-item.dropdown .btn-outline-dark:hover {
+    background-color: #331812 !important;
+    color: #fff !important;
+}
+
+/* ড্রপডাউন মেনুর আইটেমগুলোতে হোভার করলে খয়েরি হবে */
+.dropdown-item:hover {
+    background-color: #f3e5f5; /* হালকা ব্যাকগ্রাউন্ড */
+    color: black; /* খয়েরি টেক্সট */
+}
+ 
