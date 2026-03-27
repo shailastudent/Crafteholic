@@ -16,7 +16,18 @@ if (isset($_GET['complete'])) {
     exit();
 }
 
-// ৩টি টেবিল জয়েন করে ডেটা আনা (orders, users, products)
+// --- নতুন যোগ করা ডিলিট লজিক ---
+if (isset($_GET['delete'])) {
+    $delete_id = intval($_GET['delete']);
+    $delete_query = "DELETE FROM orders WHERE id = $delete_id";
+    if (mysqli_query($conn, $delete_query)) {
+        echo "<script>alert('Order Deleted Successfully!'); window.location='view_orders.php';</script>";
+    } else {
+        echo "<script>alert('Error deleting order!');</script>";
+    }
+}
+
+// ৩টি টেবিল জয়েন করে ডেটা আনা (orders, users, products)
 $sql = "SELECT orders.*, users.name as customer_name, 
                products.name as p_name, products.image as p_image 
         FROM orders 
@@ -94,12 +105,14 @@ $result = mysqli_query($conn, $sql);
                                     </a>
 
                                     <?php if($row['status'] == 'Pending'): ?>
-                                        <a href="view_orders.php?complete=<?php echo $row['id']; ?>" class="btn btn-sm btn-success" onclick="return confirm('আপনি কি নিশ্চিত?')">
-                                            Mark Completed
+                                        <a href="view_orders.php?complete=<?php echo $row['id']; ?>" class="btn btn-sm btn-success" onclick="return confirm('আপনি কি এই অর্ডারটি কমপ্লিট হিসেবে মার্ক করতে চান?')">
+                                            <i class="bi bi-check-lg"></i>
                                         </a>
-                                    <?php else: ?>
-                                        <button class="btn btn-sm btn-light text-muted" disabled>No Action</button>
                                     <?php endif; ?>
+
+                                    <a href="view_orders.php?delete=<?php echo $row['id']; ?>" class="btn btn-sm btn-danger" onclick="return confirm('সাবধান! আপনি কি নিশ্চিতভাবে এই অর্ডারটি ডিলিট করতে চান?')">
+                                        <i class="bi bi-trash"></i>
+                                    </a>
                                 </div>
                             </td>
                         </tr>
