@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         )
     );
 
-    $context  = stream_context_create($options);
+    $context  = stream_context_create($options);+
     $verify = file_get_contents($url, false, $context);
     $captcha_success = json_decode($verify);
 
