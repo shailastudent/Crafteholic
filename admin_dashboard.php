@@ -8,7 +8,11 @@ if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] !== 'admin') {
     exit();
 }
 
-// লো-স্টক প্রোডাক্ট চেক করা (যাদের স্টক ৫ বা তার কম)
+// বর্তমান তারিখ সেট করা (সার্ভার টাইম অনুযায়ী)
+// আপনি চাইলে ফরম্যাট পরিবর্তন করতে পারেন, যেমন: 'd M, Y' দিলে '12 Apr, 2026' দেখাবে
+$current_date = date('d M, Y'); 
+
+// লো-স্টক প্রোডাক্ট চেক করা
 $low_stock_query = mysqli_query($conn, "SELECT name, stock FROM products WHERE stock <= 5");
 $low_stock_count = mysqli_num_rows($low_stock_query);
 
@@ -43,15 +47,31 @@ $total_products = $product_count_data['total_products'];
         .stat-card { border-bottom: 4px solid; }
         .btn-home { background-color: #f8f9fa; color: #333; border: 1px solid #ddd; }
         .btn-home:hover { background-color: #e9ecef; }
-        .alert-custom { border-radius: 15px; border-left: 6px solid #ffc107; }
+        
+        /* ডেট ব্যাজ এর স্টাইল */
+        .date-badge {
+            background-color: white;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-weight: 600;
+            color: #0d6efd;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            display: inline-flex;
+            align-items: center;
+        }
     </style>
 </head>
 <body>
     <div class="container mt-5 pb-5">
         <div class="header-box d-flex justify-content-between align-items-center bg-white p-4 shadow-sm mb-4">
             <div>
-                <h2 class="fw-bold mb-0 text-dark">Welcome, <?php echo $_SESSION['user_name']; ?>!</h2>
-                <p class="text-muted mb-0"><i class="bi bi-shield-lock-fill me-1"></i> Crafteholic Control panel</p>
+                <h2 class="fw-bold mb-0 text-dark">👋 Welcome, <?php echo $_SESSION['user_name']; ?>!</h2>
+                <div class="d-flex align-items-center mt-1">
+                    <p class="text-muted mb-0 me-3"><i class="bi bi-shield-lock-fill me-1"></i> Crafteholic Control panel</p>
+                    <div class="date-badge small">
+                        <i class="bi bi-calendar3 me-2"></i> <?php echo $current_date; ?>
+                    </div>
+                </div>
             </div>
             <div class="d-flex gap-2">
                 <a href="index.php" class="btn btn-home rounded-pill px-4 shadow-sm">
@@ -64,30 +84,33 @@ $total_products = $product_count_data['total_products'];
         </div>
 
         <?php if ($low_stock_count > 0): ?>
-    <div class="row justify-content-left"> <div class="col-md-8"> <div class="alert bg-white border-0 shadow-sm rounded-pill mb-4 py-2 px-4" style="border-left: 5px solid #e38b11a2 !important;">
-                <div class="d-flex align-items-center justify-content-between">
-                    <div class="d-flex align-items-center">
-                        <i class="bi bi-exclamation-circle-fill text-warning fs-5 me-2"></i>
-                        <span class="small fw-bold text-dark me-2">Stock Alert:</span>
-                        <div class="d-flex flex-wrap gap-1">
-                            <?php 
-                            mysqli_data_seek($low_stock_query, 0); 
-                            while($item = mysqli_fetch_assoc($low_stock_query)): 
-                            ?>
-                                <span class="badge bg-light text-danger border rounded-pill" style="font-size: 11px;">
-                                    <?php echo $item['name']; ?> (<?php echo $item['stock']; ?>)
-                                </span>
-                            <?php endwhile; ?>
+            <div class="row justify-content-left"> 
+                <div class="col-md-8"> 
+                    <div class="alert bg-white border-0 shadow-sm rounded-pill mb-4 py-2 px-4" style="border-left: 5px solid #e38b11a2 !important;">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-exclamation-circle-fill text-warning fs-5 me-2"></i>
+                                <span class="small fw-bold text-dark me-2">Stock Alert:</span>
+                                <div class="d-flex flex-wrap gap-1">
+                                    <?php 
+                                    mysqli_data_seek($low_stock_query, 0); 
+                                    while($item = mysqli_fetch_assoc($low_stock_query)): 
+                                    ?>
+                                        <span class="badge bg-light text-danger border rounded-pill" style="font-size: 11px;">
+                                            <?php echo $item['name']; ?> (<?php echo $item['stock']; ?>)
+                                        </span>
+                                    <?php endwhile; ?>
+                                </div>
+                            </div>
+                            <a href="manage_products.php" class="btn btn-sm btn-link text-decoration-none fw-bold text-warning p-0 small">
+                                Update <i class="bi bi-arrow-right"></i>
+                            </a>
                         </div>
                     </div>
-                    <a href="manage_products.php" class="btn btn-sm btn-link text-decoration-none fw-bold text-warning p-0 small">
-                        Update <i class="bi bi-arrow-right"></i>
-                    </a>
                 </div>
             </div>
-        </div>
-    </div>
-<?php endif; ?>
+        <?php endif; ?>
+
         <div class="row g-3 mb-5 text-center">
             <div class="col-md-3">
                 <div class="card bg-white p-4 stat-card" style="border-bottom-color: #212529;">

@@ -83,7 +83,7 @@ $result = mysqli_query($conn, $sql);
                             <td>
                                 <a href="my_orders.php?delete_order=<?php echo $row['oid']; ?>" 
                                    class="btn btn-sm btn-outline-danger" 
-                                   onclick="return confirm('আপনি কি নিশ্চিত?')">Delete</a>
+                                   onclick="return confirm('Are you sure?')">Delete</a>
                             </td>
                         </tr>
                         <?php endwhile; ?>

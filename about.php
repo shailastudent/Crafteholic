@@ -64,8 +64,7 @@ include 'db_config.php';
                 </p>
 
                 <p>
-                    Our skilled artisans carefully handcraft every 
-                    <strong>Bouquet</strong>, <strong>Scrapbook</strong>, and <strong>Hijab</strong> item. 
+                    Our skilled artisans carefully handcraft every Bouquet, Scrapbook, and Hijab item. 
                     In this age of automation, we bring you the pure touch of handmade art.
                 </p>
             </div>

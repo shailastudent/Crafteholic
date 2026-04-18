@@ -46,7 +46,7 @@ if (!$order) {
         <div class="row">
             <div class="col-6">
                 <h2 class="fw-bold">Crafteholic</h2>
-                <p>হাতে তৈরি সব দারুণ কারুকাজ।</p>
+                <p>Handcrafted with beautiful and intricate designs.</p>
             </div>
             <div class="col-6 text-end">
                 <h4 class="text-uppercase text-muted">Invoice</h4>
@@ -91,7 +91,7 @@ if (!$order) {
         </table>
 
         <div class="mt-5 text-center">
-            <p class="text-muted small">Crafteholic এ কেনাকাটা করার জন্য ধন্যবাদ। <br> "No Cancellation Policy" প্রযোজ্য।</p>
+            <p class="text-muted small">Thank you for shopping at Crafteholic. <br> "No Cancellation Policy" applies.</p>
         </div>
     </div>
 

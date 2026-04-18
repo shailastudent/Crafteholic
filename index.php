@@ -104,7 +104,7 @@ include 'db_config.php';
                             <li><a class="dropdown-item" href="index.php?category=Hijab">Hijab Items</a></li>
                             <li><a class="dropdown-item" href="index.php?category=Canvas">Canvas Items</a></li>
                             <li><a class="dropdown-item" href="index.php?category=Jar">Jar Items</a></li>
-                            <li><a class="dropdown-item" href="index.php?category=Glass">Glass Items</a></li>
+                            <li><a class="dropdown-item" href="index.php?category=Card">Card Items</a></li>
                             <li><a class="dropdown-item" href="index.php?category=Box">Box Items</a></li>
                         </ul>
                     </li>
